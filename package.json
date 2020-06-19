@@ -1,0 +1,22 @@
+{
+  "name": "@scripty/mongo",
+  "version": "0.1.0",
+  "author": "Danijel Garic",
+  "license": "MIT",
+  "description": "",
+  "homepage": "https://garic.biz",
+  "keywords": [
+    "react"
+  ],
+  "extension": "js",
+  "main": "src/index.js",
+  "repository": "scripty/mongo",
+  "publishConfig": {
+    "registry": "https://nexus.garic.biz/repository/npm-registry/"
+  },
+  "dependencies": {
+    "mongoose": "^5.9.6"
+  },
+  "devDependencies": {},
+  "type": "module"
+}
