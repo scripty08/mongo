@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { Logger } from '@scripty/logger';
 
 let connection;
 
@@ -22,28 +23,28 @@ export const mongo = (config) => {
             };
 
             mongoose.connection.on('error', function(err){
-                console.error(`${connectionUrl} error: ${err}`);
+                Logger.error(`${connectionUrl} error: ${err}`);
             });
 
             mongoose.connection.on('disconnected', function(){
-                console.info('mongoose default connection is disconnected');
+                Logger.info('mongoose default connection is disconnected');
                 setTimeout(connectWithRetry, 5000);
             });
 
             mongoose.connection.on('connected', function(){
-                console.info('mongoose default connection is open');
+                Logger.info('mongoose default connection is open');
             });
 
             mongoose.connection.on('reconnected', function () {
-                console.info('mongoose reconnected!');
+                Logger.info('mongoose reconnected!');
             });
 
             const connectWithRetry = () => {
                 retry(mongoose.connect(connectionUrl, options).then((rec) => {
-                    console.info('mongoose is connected!');
+                    Logger.info('mongoose is connected!');
                     resolve(rec);
                 }).catch(err=>{
-                    console.error('mongoose connection unsuccessful, retry after 5 seconds.');
+                    Logger.error('mongoose connection unsuccessful, retry after 5 seconds.');
                     resolve(false);
                     setTimeout(connectWithRetry, 5000);
                 }));
