@@ -10,7 +10,7 @@ const retry = (connections) => {
 export const mongo = (config) => {
     if (typeof connection === 'undefined') {
 
-        const connectionUrl = `mongodb://${config.user}:${config.password}@${config.server}/${config.db}`;
+        const connectionUrl = `mongodb://${config.user}:${config.password}@${config.server}/${config.db}:${config.port}`;
 
         return new Promise((resolve) => {
 
