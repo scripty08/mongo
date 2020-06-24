@@ -16,7 +16,7 @@ export const mongo = (config) => {
             connectionUrl = `mongodb://${config.user}:${config.password}@${config.server}:${config.port}/${config.db}`;
         }
 
-        if (!config.auth) {
+        if (config.auth === 'false') {
             connectionUrl = `mongodb://${config.server}:${config.port}/${config.db}`;
         }
 
