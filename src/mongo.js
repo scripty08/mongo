@@ -16,6 +16,10 @@ export const mongo = (config) => {
             connectionUrl = `mongodb://${config.user}:${config.password}@${config.server}:${config.port}/${config.db}`;
         }
 
+        if (!config.auth) {
+            connectionUrl = `mongodb://${config.server}:${config.port}/${config.db}`;
+        }
+
         return new Promise((resolve) => {
 
             const options = {
